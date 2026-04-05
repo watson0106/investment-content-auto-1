@@ -128,6 +128,9 @@ def post_to_note(image_path):
     body = BODY.strip()
     if image_path:
         body = '__IMAGE_0__\n\n' + body
+    # 絶対パスに変換（カバー画像設定に必要）
+    if image_path:
+        image_path = str(Path(image_path).resolve())
     image_paths = [image_path] if image_path else []
 
     print("note に投稿中...")
